@@ -1,7 +1,9 @@
 package home;
 
+import javax.swing.*;
+
 public class Principal {
     public static void main(String args[]){
-        System.out.println("Hello Word");
+        JOptionPane.showMessageDialog(null,"Hello World");
     }
 }
