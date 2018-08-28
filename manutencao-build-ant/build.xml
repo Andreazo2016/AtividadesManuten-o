@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="clean">
+    <description>
+        Hello World
+    </description>
+
+    <target name="clean">
+        <delete dir="build" />
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes" />
+        <javac srcdir="src" destdir="build/classes" />
+    </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar" />
+        <jar destfile="build/jar/Principal.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.br.home.Principal.Main" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/Principal.jar" fork="true" />
+    </target>
+
+    <target name="sign">
+        <mkdir dir="signed"/>
+        <signjar destDir="signed" alias="gerar_chave" keystore="chave_build_ant.jks" storepass="123321a">
+            <path>
+                <fileset dir="build/jar/" includes="*.jar" />
+            </path>
+            <flattenmapper />
+        </signjar>
+    </target>
+
+
+</project>
